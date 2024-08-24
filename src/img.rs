@@ -340,15 +340,15 @@ impl Image {
                 let mut g: u8 = 0;
                 let mut b: u8 = 0;
                 
-                if 0.0 <= abs_theta && abs_theta < 0.1 {
+                if 0.0 <= abs_theta && abs_theta < 0.05 {
                     direction = Direction::Vertical;
                 } else if 0.9 < abs_theta && abs_theta <= 1.0 {
                     direction = Direction::Vertical;
-                } else if 0.4 < abs_theta && abs_theta < 0.6 {
+                } else if 0.45 < abs_theta && abs_theta < 0.55 {
                     direction = Direction::Horizontal;
-                } else if 0.1 < abs_theta && abs_theta < 0.4 {
+                } else if 0.05 < abs_theta && abs_theta < 0.45 {
                     direction = if theta.is_sign_positive() {Direction::Backward} else {Direction::Forward};
-                } else if 0.6 < abs_theta && abs_theta < 0.9 {
+                } else if 0.55 < abs_theta && abs_theta < 0.9 {
                     direction = if theta.is_sign_positive() {Direction::Forward} else {Direction::Backward};
                 }
 
@@ -390,7 +390,7 @@ impl Image {
         return res;
     }
 
-    pub fn to_ascii(&self) -> Vec<String> {
+    pub fn ascii_border(&self) -> Vec<String> {
         let mut res: Vec<String> = Vec::new();
 
         for i in 0..self.height as i32 {
@@ -424,5 +424,9 @@ impl Image {
         }
         
         return res;
+    }
+
+    pub fn to_ascii(&self) -> Vec<String> {
+        todo!()
     }
 }
